@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -46,6 +47,7 @@
     <Compile Include="Task1\GCDAlgorithms\BinaryAlgorithm.cs" />
     <Compile Include="Task1\GCDAlgorithms\ClassicEuclideanAlgorithm.cs" />
     <Compile Include="Task1\GCDCalculator.cs" />
+    <Compile Include="Task2\DoubleHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

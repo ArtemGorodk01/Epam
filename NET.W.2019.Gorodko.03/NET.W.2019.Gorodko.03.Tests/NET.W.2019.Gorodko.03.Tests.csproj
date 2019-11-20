@@ -64,6 +64,7 @@
     <Compile Include="Task1\GCDAlgorithms\BinaryAlgorithmTests.cs" />
     <Compile Include="Task1\GCDAlgorithms\ClassicEuclideanAlgorithmTests.cs" />
     <Compile Include="Task1\GCDCalculatorTests.cs" />
+    <Compile Include="Task2\DoubleHelperTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
