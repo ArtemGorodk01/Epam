@@ -2,50 +2,54 @@
 
 namespace NET.W._2019.Gorodko._02.Task1
 {
-    /// <summary>
-     /// Task 1
+     /// <summary>
+     /// Task1
      /// Contains static method for insertion bits
      /// </summary>
     public static class NumberInsertion
     {
         /// <summary>
         /// insert j - i + 1 right bits of number2 
-        /// into i-j bits of multiplication bits of number1 and number2
+        /// into i-j bits of number1
         /// </summary>
         /// <param name="number1">the number for multiplication</param>
         /// <param name="number2">the number for multiplication and insertion</param>
         /// <param name="i">the index of the first bit for insertion</param>
         /// <param name="j">the index of the last bit for insertion</param>
         /// <returns>
-        /// result of multiplication of number1 and number2
-        /// and insertion of needed bits
+        /// The result of insertion j - i + 1 right bits of number2 
+        /// into i-j bits of number1
         /// </returns>
         public static int InsertNumber(int number1, int number2, int i, int j)
         {
             if (i > j)
+            {
                 throw new ArgumentException("Parameter j must be larger than i");
+            }
 
             if (j < 0)
+            {
                 throw new ArgumentException("Parameters i and j must be larger than -1");
+            }
 
-            //result of + function
-            int tempResult = number1 & number2;
-            //get into leftBits bits after the last insertion bit
-            int leftBits = CalculateLeftBitsToInt(tempResult, j + 1);
-            //get into rightBits bits before the first insertion bit
-            int rightBits = CalculateRightBitsToInt(tempResult, i);
-            //git into insertionBits bits from i-bit to j-bit
+            // get into leftBits bits after the last insertion bit
+            int leftBits = CalculateLeftBitsToInt(number1, j + 1);
+
+            // get into rightBits bits before the first insertion bit
+            int rightBits = CalculateRightBitsToInt(number1, i);
+
+            // git into insertionBits bits from i-bit to j-bit
             int insertionBits = CalculateRightBitsToInt(number2, j - i + 1);
 
-            //the result is sum of:
-            //rightBits without offset
-            //insertionBits with offset that equals i
-            //leftBits with offset that equls j + 1
+            // the result is sum of:
+            // rightBits without offset
+            // insertionBits with offset that equals i
+            // leftBits with offset that equls j + 1
             return rightBits + (insertionBits << i) + (leftBits << j + 1);
         }
 
         /// <summary>
-        /// Calculates int number that contains left bits without offset
+        /// Calculates number that contains left bits without offset
         /// </summary>
         /// <param name="number">Source number</param>
         /// <param name="offset">Offset</param>
