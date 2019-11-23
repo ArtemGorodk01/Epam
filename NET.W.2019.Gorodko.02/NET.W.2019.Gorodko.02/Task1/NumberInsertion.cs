@@ -45,7 +45,7 @@ namespace NET.W._2019.Gorodko._02.Task1
             // rightBits without offset
             // insertionBits with offset that equals i
             // leftBits with offset that equls j + 1
-            return rightBits + (insertionBits << i) + (leftBits << j + 1);
+            return rightBits + ((insertionBits << i) + ((leftBits << j) + 1));
         }
 
         /// <summary>
@@ -53,17 +53,17 @@ namespace NET.W._2019.Gorodko._02.Task1
         /// </summary>
         /// <param name="number">Source number</param>
         /// <param name="offset">Offset</param>
-        /// <returns>Int number that contains left bits</returns>
+        /// <returns>The number that contains left bits</returns>
         private static int CalculateLeftBitsToInt(int number, int offset)
         {
             return number >> offset;
         }
 
         /// <summary>
-        /// Calculates int number putting 1 in each bit
+        /// Calculates number putting 1 in each bit
         /// </summary>
         /// <param name="countOfBits">Count of 1 in the result binary number</param>
-        /// <returns>Int number which contains only 1 in binary view</returns>
+        /// <returns>The number which contains only 1 in binary view</returns>
         private static int CalculateNumberWithBits1(int countOfBits)
         {
             int result = 0;
@@ -77,11 +77,11 @@ namespace NET.W._2019.Gorodko._02.Task1
         }
 
         /// <summary>
-        /// Calculates int number which contains countOfBits right bits of source number
+        /// Calculates number which contains countOfBits right bits of source number
         /// </summary>
         /// <param name="number">Source number</param>
         /// <param name="countOfBits">Count of needed right bits</param>
-        /// <returns>Int number that contains countOfBits right bits of source number</returns>
+        /// <returns>The number that contains countOfBits right bits of source number</returns>
         private static int CalculateRightBitsToInt(int number, int countOfBits)
         {
             return number & CalculateNumberWithBits1(countOfBits);

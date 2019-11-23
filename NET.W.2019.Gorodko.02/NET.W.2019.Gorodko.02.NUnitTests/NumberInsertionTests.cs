@@ -1,6 +1,6 @@
 ﻿using System;
-using NUnit.Framework;
 using NET.W._2019.Gorodko._02.Task1;
+using NUnit.Framework;
 
 namespace NET.W._2019.Gorodko._02.NUnitTests
 {

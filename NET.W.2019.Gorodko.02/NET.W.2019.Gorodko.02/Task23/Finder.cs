@@ -12,39 +12,43 @@ namespace NET.W._2019.Gorodko._02.Task23
     public static class Finder
     {
         /// <summary>
-        /// Finds the first bigger number that conatains only digits of source number.
+        /// Finds the first bigger number that contains only digits of source number.
         /// </summary>
         /// <param name="number">The source number</param>
         /// <returns>
-        /// The first bigger number that conatains only digits of source number.
+        /// The first bigger number that contains only digits of source number.
         /// If number doesn't exist returns -1.
         /// </returns>
         public static int FindNextBiggerNumber(int number)
         {
             if (number < 0)
+            {
                 throw new ArgumentOutOfRangeException(nameof(number), "The number must be larger than 0");
+            }
 
-            //Devide the source number into array (each digit)
+            // Devide the source number into array (each digit)
             var array = CreateArray(number);
-            //Put digits in the right order
+
+            // Put digits in the right order
             ProcessArray(array);
-            //Transform array
+
+            // Transform array
             int result = GetNumberFromArray(array);
 
             return number == result ? -1 : result;
         }
 
         /// <summary>
-        /// Finds the first bigger number that conatains only digits of source number.
-        /// Calculates execution time of method FindNextBiggerNumber(int) using StopWatch
+        /// Finds the first bigger number that contains only digits of source number.
+        /// Calculates execution time of method FindNextBiggerNumber using StopWatch
         /// </summary>
         /// <param name="number">The source number</param>
         /// <param name="ticks">
         /// Out parameter that contains count of ticks
-        /// (execution time of method FindNextBiggerNumber(int))
+        /// (execution time of method FindNextBiggerNumber)
         /// </param>
         /// <returns>
-        /// The first bigger number that conatains only digits of source number.
+        /// The first bigger number that contains only digits of source number.
         /// If number doesn't exist returns -1.
         /// </returns>
         public static int FindNextBiggerNumber(int number, out long ticks)
@@ -63,16 +67,16 @@ namespace NET.W._2019.Gorodko._02.Task23
         }
 
         /// <summary>
-        /// Finds the first bigger number that conatains only digits of source number.
-        /// Calculates execution time of method FindNextBiggerNumber(int) using Environment.TickCount
+        /// Finds the first bigger number that contains only digits of source number.
+        /// Calculates execution time of method FindNextBiggerNumber using Environment.TickCount
         /// </summary>
         /// <param name="number">The source number</param>
         /// <param name="ticks">
         /// Out parameter that contains count of ticks
-        /// (execution time of method FindNextBiggerNumber(int))
+        /// (execution time of method FindNextBiggerNumber)
         /// </param>
         /// <returns>
-        /// The first bigger number that conatains only digits of source number.
+        /// The first bigger number that contains only digits of source number.
         /// If number doesn't exist returns -1.
         /// </returns>
         public static int FindNextBiggerNumber(int number, out int ticks)
@@ -90,10 +94,10 @@ namespace NET.W._2019.Gorodko._02.Task23
         }
 
         /// <summary>
-        /// Calculates int number from int number
+        /// Calculates number from array of digits
         /// </summary>
         /// <param name="array">The array with digits of the number</param>
-        /// <returns>Number that contains each digit from array</returns>
+        /// <returns>Number that contains each digit from array in the same order</returns>
         private static int GetNumberFromArray(int[] array)
         {
             int result = 0;
@@ -108,11 +112,11 @@ namespace NET.W._2019.Gorodko._02.Task23
         /// <summary>
         /// Changes the order of elements in the array
         /// </summary>
-        /// <param name="array">source array</param>
+        /// <param name="array">Source array</param>
         private static void ProcessArray(int[] array)
         {
-            //Find the first number
-            //which right neighbor is more than itself
+            // Find the first number
+            // which right neighbor is more than itself
             int i = array.Length - 1;
             bool isChangable = false;
             while (i > 0)
@@ -125,10 +129,14 @@ namespace NET.W._2019.Gorodko._02.Task23
             }
 
             if (!isChangable)
+            {
                 return;
-            //change element and his right neughbor
+            }
+
+            // Change element and his right neughbor
             (array[i], array[i + 1]) = (array[i + 1], array[i]);
-            //sort the right part of array
+
+            // Sort the right part of array
             SortPartArray(array, i + 1, array.Length - 1);
         }
 
@@ -136,12 +144,14 @@ namespace NET.W._2019.Gorodko._02.Task23
         /// Orders the part of the array from leftIndex to rightIndex
         /// </summary>
         /// <param name="array">Source array</param>
-        /// <param name="leftIndex">The index of the first element which has to ordered</param>
-        /// <param name="rightIndex">The index of the last element which has to ordered</param>
+        /// <param name="leftIndex">The index of the first element which has to be ordered</param>
+        /// <param name="rightIndex">The index of the last element which has to be ordered</param>
         private static void SortPartArray(int[] array, int leftIndex, int rightIndex)
         {
             if (rightIndex - leftIndex < 1)
+            {
                 return;
+            }
 
             int i = leftIndex + 1;
             while (i <= rightIndex)
@@ -180,7 +190,7 @@ namespace NET.W._2019.Gorodko._02.Task23
         }
 
         /// <summary>
-        /// Returns the count of the digits in source number
+        /// Returns the count of digits in source number
         /// </summary>
         /// <param name="number">Source of the number</param>
         /// <returns>Rank of the number</returns>

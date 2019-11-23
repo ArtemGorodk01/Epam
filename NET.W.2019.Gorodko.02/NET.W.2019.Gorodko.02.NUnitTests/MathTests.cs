@@ -26,9 +26,9 @@ namespace NET.W._2019.Gorodko._02.NUnitTests
             Assert.Throws<ArgumentOutOfRangeException>(() => Math.FindNthRoot(1, 2, -1));
         }
 
-        [TestCase(1,5,0.0001,1)]
+        [TestCase(1, 5, 0.0001, 1)]
         [TestCase(8, 3, 0.0001, 2)]
-        [TestCase(0.001,3, 0.0001,0.1)]
+        [TestCase(0.001, 3, 0.0001, 0.1)]
         [TestCase(0.04100625, 4, 0.0001, 0.45)]
         [TestCase(8, 3, 0.0001, 2)]
         [TestCase(0.0279936, 7, 0.0001, 0.6)]
