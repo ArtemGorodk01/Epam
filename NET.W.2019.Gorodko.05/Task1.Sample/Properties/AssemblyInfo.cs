@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("NET.W.2019.Gorodko.05")]
+[assembly: AssemblyTitle("Task1.Sample")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("NET.W.2019.Gorodko.05")]
+[assembly: AssemblyProduct("Task1.Sample")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("b23e92e5-37a1-493f-aa2b-4335f9408b04")]
+[assembly: Guid("f38d113d-15ba-4cb4-8608-ca5396d09084")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //
