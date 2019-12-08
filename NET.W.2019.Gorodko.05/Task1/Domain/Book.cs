@@ -373,7 +373,7 @@ namespace Task1.Domain
                 case Tag.Author:
                     return Author;
                 case Tag.Title:
-                    return Author;
+                    return Title;
                 case Tag.Publisher:
                     var sbP = new StringBuilder();
                     sbP.Append("\"").Append(Publisher).Append("\"");
