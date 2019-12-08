@@ -12,7 +12,7 @@ namespace NET.W._2019.Gorodko._04.Tests.Task2
         {
             int[][] array = null;
 
-            Assert.Throws<ArgumentNullException>(() => array.Sort((a, b) => a == b, true));
+            Assert.Throws<ArgumentNullException>(() => array.Sort((a, b) => a[0] - b[0], true));
         }
 
         [Test]
@@ -21,7 +21,7 @@ namespace NET.W._2019.Gorodko._04.Tests.Task2
             var array = new int[1][];
             array[0] = new int[] { 1 };
 
-            Assert.Throws<ArgumentNullException>(() => array.Sort(null, true));
+            Assert.Throws<ArgumentNullException>(() => array.Sort((Func<int[], int[], int>)null, true));
         }
 
         [Test]

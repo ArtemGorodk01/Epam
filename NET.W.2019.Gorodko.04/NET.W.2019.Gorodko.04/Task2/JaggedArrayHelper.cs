@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace NET.W._2019.Gorodko._04.Task2
 {
@@ -9,7 +10,7 @@ namespace NET.W._2019.Gorodko._04.Task2
     {
         /// <summary>
         /// Extension method for jagged array
-        /// Sorts array
+        /// Sorts array using delegate
         /// </summary>
         /// <param name="array">Source array</param>
         /// <param name="compare">The way of comparing two line arrays</param>
@@ -17,7 +18,7 @@ namespace NET.W._2019.Gorodko._04.Task2
         /// True: from minimum to maximum
         /// False: from maximum to minimum
         /// </param>
-        public static void Sort(this int[][] array, Func<int[], int[], bool> compare, bool isUp)
+        public static void Sort(this int[][] array, Func<int[], int[], int> compare, bool isUp)
         {
             if (array == null)
             {
@@ -35,7 +36,7 @@ namespace NET.W._2019.Gorodko._04.Task2
             {
                 for (int j = 0; j < array.Length - i; j++)
                 {
-                    if (isUp ? compare(array[j], array[j + 1]) : !compare(array[j], array[j + 1]))
+                    if (isUp ? compare(array[j], array[j + 1]) > 0 : compare(array[j], array[j + 1]) < 0)
                     {
                         (array[j], array[j + 1]) = (array[j + 1], array[j]);
                     }
@@ -44,15 +45,34 @@ namespace NET.W._2019.Gorodko._04.Task2
         }
 
         /// <summary>
+        /// Extension method for jagged array
+        /// Sorts array using IComparer<int[]>
+        /// </summary>
+        /// <param name="array">Source array</param>
+        /// <param name="compare">The way of comparing two line arrays</param>
+        /// <param name="isUp">
+        /// True: from minimum to maximum
+        /// False: from maximum to minimum
+        /// </param>
+        public static void Sort(this int[][] array, IComparer<int[]> comparer, bool isUp)
+        {
+            if (comparer == null)
+            {
+                throw new ArgumentNullException(nameof(comparer));
+            }
+
+            Sort(array, comparer.Compare, isUp);
+        }
+
+        /// <summary>
         /// Compares two arrays by summation of elements
         /// </summary>
         /// <param name="array1">First array</param>
         /// <param name="array2">Second array</param>
         /// <returns>
-        /// True if summation of first array elements is bigger
-        /// Else false
+        /// First sum - second sum
         /// </returns>
-        public static bool CompareArraySum(int[] array1, int[] array2)
+        public static int CompareArraySum(int[] array1, int[] array2)
         {
             if (array1 == null)
             {
@@ -77,7 +97,7 @@ namespace NET.W._2019.Gorodko._04.Task2
                 sum2 += item;
             }
 
-            return sum1 > sum2;
+            return sum1 - sum2;
         }
 
         /// <summary>
@@ -86,10 +106,9 @@ namespace NET.W._2019.Gorodko._04.Task2
         /// <param name="array1">First array</param>
         /// <param name="array2">Second array</param>
         /// <returns>
-        /// True if maximum of first array is bigger
-        /// Else false
+        /// First maximum - second maximum
         /// </returns>
-        public static bool CompareArrayMax(int[] array1, int[] array2)
+        public static int CompareArrayMax(int[] array1, int[] array2)
         {
             if (array1 == null)
             {
@@ -104,7 +123,7 @@ namespace NET.W._2019.Gorodko._04.Task2
             int max1 = FindMax(array1),
                 max2 = FindMax(array2);
 
-            return max1 > max2;
+            return max1 - max2;
         }
 
         /// <summary>
@@ -113,10 +132,9 @@ namespace NET.W._2019.Gorodko._04.Task2
         /// <param name="array1">First array</param>
         /// <param name="array2">Second array</param>
         /// <returns>
-        /// True if minimum of first array is bigger
-        /// Else false
+        /// First minimum - second minimum
         /// </returns>
-        public static bool CompareArrayMin(int[] array1, int[] array2)
+        public static int CompareArrayMin(int[] array1, int[] array2)
         {
             if (array1 == null)
             {
@@ -131,7 +149,7 @@ namespace NET.W._2019.Gorodko._04.Task2
             int min1 = FindMin(array1),
                 min2 = FindMin(array2);
 
-            return min1 > min2;
+            return min1 - min2;
         }
 
         /// <summary>
