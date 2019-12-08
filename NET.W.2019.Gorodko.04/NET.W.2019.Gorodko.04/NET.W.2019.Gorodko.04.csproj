@@ -44,6 +44,8 @@
     <Compile Include="Task1\Polynomial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Task2\JaggedArrayHelper.cs" />
+    <Compile Include="Task2\Task6Addition\ArrayComparer.cs" />
+    <Compile Include="Task2\Task6Addition\JaggedArrayHelper.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

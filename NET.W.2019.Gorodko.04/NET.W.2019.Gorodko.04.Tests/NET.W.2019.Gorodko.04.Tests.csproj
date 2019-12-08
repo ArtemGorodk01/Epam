@@ -50,6 +50,7 @@
     <Compile Include="Task1\PolynomialTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Task2\JaggedArrayHelperTests.cs" />
+    <Compile Include="Task2\Task6Addition\JaggedArrayHelperTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
