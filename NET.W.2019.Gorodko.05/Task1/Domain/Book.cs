@@ -1,8 +1,13 @@
 ﻿using System;
+using System.Globalization;
+using System.Text;
 
 namespace Task1.Domain
 {
-    public class Book : IComparable, IComparable<Book>, IEquatable<Book>
+    /// <summary>
+    /// Describes book
+    /// </summary>
+    public class Book : IComparable, IComparable<Book>, IEquatable<Book>, IFormattable
     {
         #region Private fields
 
@@ -280,6 +285,108 @@ namespace Task1.Domain
             }
 
             return false;
+        }
+
+        #endregion
+
+        #region IFormattable implementation
+
+        /// <summary>
+        /// Returns string using specified format
+        /// </summary>
+        /// <param name="format"></param>
+        /// <param name="formatProvider"></param>
+        /// <returns>String using specified format</returns>
+        public string ToString(string format, IFormatProvider formatProvider)
+        {
+            if (format == null)
+            {
+                throw new ArgumentNullException(nameof(format));
+            }
+
+            if (formatProvider == null)
+            {
+                formatProvider = CultureInfo.CurrentCulture;
+            }
+
+            return ParseFormat(format, formatProvider);
+        }
+
+        /// <summary>
+        /// Returns result string after parsing the format
+        /// </summary>
+        /// <param name="format"></param>
+        /// <param name="formatProvider"></param>
+        /// <returns>Result string after parsing the format</returns>
+        private string ParseFormat(string format, IFormatProvider formatProvider)
+        {
+            var sb = new StringBuilder();
+            this.AddNeededString(sb, Tag.ISBN, format, formatProvider);
+            this.AddNeededString(sb, Tag.Author, format, formatProvider);
+            this.AddNeededString(sb, Tag.Title, format, formatProvider);
+            this.AddNeededString(sb, Tag.Publisher, format, formatProvider);
+            this.AddNeededString(sb, Tag.Year, format, formatProvider);
+            this.AddNeededString(sb, Tag.Pages, format, formatProvider);
+            this.AddNeededString(sb, Tag.Price, format, formatProvider);
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Adds to dynamic string needed tag if name of tag is mentioned in source string
+        /// </summary>
+        /// <param name="sb">Dynamic string</param>
+        /// <param name="tag">Tag</param>
+        /// <param name="sourceString">Source string</param>
+        /// <param name="formatProvider">Format provider</param>
+        private void AddNeededString(StringBuilder sb, Tag tag, string sourceString, IFormatProvider formatProvider)
+        {
+            if (sourceString.ToUpperInvariant().Contains(tag.ToString().ToUpperInvariant()))
+            {
+                if (sb.Length != 0)
+                {
+                    sb.Append(", ");
+                }
+
+                sb.Append(this.GetStringByTag(tag, formatProvider));
+            }
+        }
+
+        /// <summary>
+        /// Returns the string with description of the tag
+        /// </summary>
+        /// <param name="tag">Tag</param>
+        /// <param name="formatProvider">Format provider</param>
+        /// <returns>string with description of the tag</returns>
+        private string GetStringByTag(Tag tag, IFormatProvider formatProvider)
+        {
+            switch (tag)
+            {
+                case Tag.ISBN:
+                    var sbI = new StringBuilder();
+                    sbI.Append("ISBN 13: ");
+                    sbI.Append(ISBN.Substring(0, 3)).Append("-");
+                    sbI.Append(ISBN.Substring(3, 1)).Append("-");
+                    sbI.Append(ISBN.Substring(4, 4)).Append("-");
+                    sbI.Append(ISBN.Substring(8, 4)).Append("-");
+                    sbI.Append(ISBN.Substring(12, 1));
+                    return sbI.ToString();
+                case Tag.Author:
+                    return Author;
+                case Tag.Title:
+                    return Author;
+                case Tag.Publisher:
+                    var sbP = new StringBuilder();
+                    sbP.Append("\"").Append(Publisher).Append("\"");
+                    return sbP.ToString();
+                case Tag.Pages:
+                    return "P." + Pages.ToString(formatProvider);
+                case Tag.Price:
+                    return Price.ToString(formatProvider) + "$";
+                case Tag.Year:
+                    return Year.ToString(formatProvider);
+                default:
+                    throw new InvalidOperationException();
+            }
         }
 
         #endregion

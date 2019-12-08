@@ -35,19 +35,19 @@ namespace Task1.Sample
 
             foreach (var item in newService.Load().FindBooksByTag(books[1], Book.Tag.ISBN))
             {
-                Console.WriteLine(item.ISBN);
+                Console.WriteLine(item.ToString("isbn, author", null));
             }
 
             Console.WriteLine("----------------------------------------");
             foreach (var item in newService.FindBooksByTag(books[1], Book.Tag.Author))
             {
-                Console.WriteLine(item.ISBN);
+                Console.WriteLine(item.ToString("isbn, author", null));
             }
 
             Console.WriteLine("----------------------------------------");
             for (int i = 0; i < newService.CountOfBooks; i++)
             {
-                Console.WriteLine(newService[i].Author);
+                Console.WriteLine(newService[i].ToString("isbn, author, title", null));
             }
 
             Console.WriteLine("---------------------------------------");
@@ -56,7 +56,7 @@ namespace Task1.Sample
 
             for (int i = 0; i < newService.CountOfBooks; i++)
             {
-                Console.WriteLine(newService[i].Author);
+                Console.WriteLine(newService[i].ToString("isbn, author, title, pages, price", null));
             }
 
             newService.Save();
