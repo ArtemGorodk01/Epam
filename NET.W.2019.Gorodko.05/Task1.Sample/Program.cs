@@ -54,9 +54,10 @@ namespace Task1.Sample
 
             newService.SortBooksByTag(Book.Tag.Author);
 
+            var bookFormatter = new BookFormatter();
             for (int i = 0; i < newService.CountOfBooks; i++)
             {
-                Console.WriteLine(newService[i].ToString("isbn, author, title, pages, price", null));
+                Console.WriteLine(bookFormatter.Format("full", newService[i], null));
             }
 
             newService.Save();
