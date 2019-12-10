@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Task1.Domain;
+using Task1.Service.Logging.Abstract;
 using Task1.Storage.Abstract;
 
 namespace Task1.Service
@@ -19,6 +20,11 @@ namespace Task1.Service
         /// Collection with books
         /// </summary>
         private List<Book> _books;
+
+        /// <summary>
+        /// Logger
+        /// </summary>
+        public ILogger Logger { private get; set; }
 
         /// <summary>
         /// Initials new service
@@ -74,6 +80,7 @@ namespace Task1.Service
             }
 
             _books.Add(book);
+            Logger?.Debug($"Add book {book.ISBN}");
             return this;
         }
 
@@ -95,6 +102,7 @@ namespace Task1.Service
             }
 
             _books.Remove(book);
+            Logger?.Debug($"Remove book {book.ISBN}");
             return this;
         }
 
@@ -145,6 +153,7 @@ namespace Task1.Service
         public BookListService Load()
         {
             _books = _storage.ReadAll();
+            Logger?.Debug($"Load {_books.Count} books from storage");
             return this;
         }
 
@@ -155,6 +164,7 @@ namespace Task1.Service
         public BookListService Save()
         {
             _storage.WriteAll(_books);
+            Logger?.Debug($"Write {_books.Count} books to storage");
             return this;
         }
     }
