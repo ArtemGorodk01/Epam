@@ -9,9 +9,9 @@ namespace Task2
     public class Timer
     {
         /// <summary>
-        /// Event handler
+        /// Object for synchronization
         /// </summary>
-        private event EventHandler Handler;
+        private static readonly object Sync = new object();
 
         /// <summary>
         /// Instance
@@ -19,12 +19,19 @@ namespace Task2
         private static Timer instance;
 
         /// <summary>
-        /// Object for synchronization
+        /// Private constructor
         /// </summary>
-        private static readonly object sync = new object();
+        private Timer()
+        {
+        }
 
         /// <summary>
-        /// Double check singlton
+        /// Event handler
+        /// </summary>
+        private event EventHandler Handler;
+
+        /// <summary>
+        /// Double check singleton
         /// </summary>
         public static Timer Instance
         {
@@ -32,7 +39,7 @@ namespace Task2
             {
                 if (instance == null)
                 {
-                    lock (sync)
+                    lock (Sync)
                     {
                         if (instance == null)
                         {
@@ -44,12 +51,6 @@ namespace Task2
                 return instance;
             }
         }
-
-        /// <summary>
-        /// Private constructor
-        /// </summary>
-        private Timer()
-        { }
 
         /// <summary>
         /// Starts timer. Invokes handler when time is out
