@@ -10,7 +10,8 @@
 ### Выполнение
 [Решение](https://github.com/ArtemGorodk01/Epam/blob/master/NET.W.2019.Gorodko.04/NET.W.2019.Gorodko.04/Task1/Polynomial.cs)<br>
 [Тесты](https://github.com/ArtemGorodk01/Epam/blob/master/NET.W.2019.Gorodko.04/NET.W.2019.Gorodko.04.Tests/Task1/PolynomialTests.cs)
-2. Реализовать алгоритм “пузырьковой” сортировки непрямоугольного (jagged array)
+# Задание 2.
+Реализовать алгоритм “пузырьковой” сортировки непрямоугольного (jagged array)
 целочисленного массива (методы сортировки класса System.Array не
 использовать) таким образом, чтобы была возможность упорядочить строки матрицы:
 - в порядке возрастания (убывания) сумм элементов строк матрицы;
