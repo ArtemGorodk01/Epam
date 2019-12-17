@@ -12,5 +12,5 @@
 типу. Предусмотреть возможность подписки на событие в нескольких классах.<br>
 Продемонстрировать работу класса в консольном приложении.
 ### Выполнение
-[Решение](https://github.com/ArtemGorodk01/Epam/blob/master/NET.W.2019.Gorodko.07/Task2/Timer.cs)
+[Решение](https://github.com/ArtemGorodk01/Epam/blob/master/NET.W.2019.Gorodko.07/Task2/Timer.cs)<br>
 [Пример использования](https://github.com/ArtemGorodk01/Epam/tree/master/NET.W.2019.Gorodko.07/Task2.Sample)
