@@ -1,5 +1,5 @@
 # Задание 1.
 Реализовать методы быстрой сортировки и сортировки слиянием для целочисленного массива. Протестировать работу методов в консольном приложении или с помощью модульного тестирования.
 ### Выполнение
-[Проект с выполненным заданием](https://github.com/ArtemGorodk01/Epam/tree/master/NET.W.2019.Gorodko.01/NET.W.2019.Gorodko.01)
+[Проект с выполненным заданием](https://github.com/ArtemGorodk01/Epam/tree/master/NET.W.2019.Gorodko.01/NET.W.2019.Gorodko.01)<br>
 [Тесты к выполнению](https://github.com/ArtemGorodk01/Epam/tree/master/NET.W.2019.Gorodko.01/NET.W.2019.Gorodko.01.Tests)
