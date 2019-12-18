@@ -53,6 +53,7 @@ namespace Task1
 
             this.capacity = elements.Length;
             this.array = new T[capacity];
+            Count = capacity;
             elements.CopyTo(this.array, 0);
         }
 
