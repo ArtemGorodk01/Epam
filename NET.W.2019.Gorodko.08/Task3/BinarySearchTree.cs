@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Task3
 {
     /// <summary>
-    /// Provides working with bimary search tree.
+    /// Provides working with binary search tree.
     /// </summary>
     /// <typeparam name="T">The type of elements of the tree.</typeparam>
     public class BinarySearchTree<T>
@@ -21,6 +19,11 @@ namespace Task3
 
         #region Constructor
 
+        /// <summary>
+        /// Initials the new tree.
+        /// </summary>
+        /// <param name="value">The value for the root.</param>
+        /// <param name="comparer">The comparer.</param>
         public BinarySearchTree(T value, IComparer<T> comparer = null)
         {
             this.root = new Node<T>(value);
@@ -38,22 +41,7 @@ namespace Task3
         /// <param name="value">The value to add.</param>
         public void AddElement(T value)
         {
-            var newNode = new Node<T>(value);
-
-            Node<T> tempNode = this.root;
-            while (tempNode != null)
-            {
-                if (this.compare(newNode.Value, tempNode.Value) < 0)
-                {
-                    tempNode = tempNode.Left;
-                }
-                else
-                {
-                    tempNode = tempNode.Right;
-                }
-            }
-
-            tempNode = newNode;
+            root = AddElement(root, value);
         }
 
         /// <summary>
@@ -88,47 +76,84 @@ namespace Task3
 
         private IEnumerable<T> Preorder(Node<T> node)
         {
-            yield return root.Value;
+            yield return node.Value;
 
-            foreach (var item in Preorder(node.Left))
+            if (node.Left != null)
             {
-                yield return item;
+                foreach (var item in Preorder(node.Left))
+                {
+                    yield return item;
+                }
             }
 
-            foreach (var item in Preorder(node.Right))
+            if (node.Right != null)
             {
-                yield return item;
+                foreach (var item in Preorder(node.Right))
+                {
+                    yield return item;
+                }
             }
         }
 
         private IEnumerable<T> Inorder(Node<T> node)
         {
-            foreach (var item in Inorder(node.Left))
+            if (node.Left != null)
             {
-                yield return item;
+                foreach (var item in Inorder(node.Left))
+                {
+                    yield return item;
+                }
             }
 
-            yield return root.Value;
+            yield return node.Value;
 
-            foreach (var item in Inorder(node.Right))
+            if (node.Right != null)
             {
-                yield return item;
+                foreach (var item in Inorder(node.Right))
+                {
+                    yield return item;
+                }
             }
         }
 
         private IEnumerable<T> Postorder(Node<T> node)
         {
-            foreach (var item in Postorder(node.Left))
+            if (node.Left != null)
             {
-                yield return item;
+                foreach (var item in Postorder(node.Left))
+                {
+                    yield return item;
+                }
             }
 
-            foreach (var item in Postorder(node.Right))
+            if (node.Right != null)
             {
-                yield return item;
+                foreach (var item in Postorder(node.Right))
+                {
+                    yield return item;
+                }
             }
 
-            yield return root.Value;
+            yield return node.Value;
+        }
+
+        private Node<T> AddElement(Node<T> node, T value)
+        {
+            if (node == null)
+            {
+                return new Node<T>(value);
+            }
+
+            if (this.compare(value, node.Value) < 0)
+            {
+                node.Left = AddElement(node.Left, value);
+            }
+            else
+            {
+                node.Right = AddElement(node.Right, value);
+            }
+
+            return node;
         }
 
         #endregion
