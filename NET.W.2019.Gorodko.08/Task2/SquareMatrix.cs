@@ -17,6 +17,11 @@ namespace Task2
         /// <param name="size">The size of the matrix.</param>
         public SquareMatrix(int size)
         {
+            if (size < 0)
+            {
+                throw new ArgumentException("Size of matrix must be positive.");
+            }
+
             this.Size = size;
             this.Matrix = new T[Size, Size];
         }
@@ -40,9 +45,9 @@ namespace Task2
             {
                 this.CheckSetArguments(i, j);
                 this.SetElement(i, j, value);
-                if (OnChangeElement != null)
+                if (this.OnChangeElement != null)
                 {
-                    OnChangeElement.Invoke(this, new EventArgs());
+                    this.OnChangeElement.Invoke(this, new EventArgs());
                 }
             }
         }
