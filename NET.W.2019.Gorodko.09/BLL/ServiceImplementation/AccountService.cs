@@ -125,7 +125,7 @@ namespace BLL.ServiceImplementation
         /// <inheritdoc/>
         public void WriteAll()
         {
-            var accountList = accounts.ToList().Select(n => n.Value);
+            var accountList = this.accounts.ToList().Select(n => n.Value);
             this.repository.Save(accountList.Select(n => n.ToAccountDTO()));
         }
 

@@ -71,7 +71,7 @@ namespace BLL.Interface.Entities.Accounts.Abstract
                 throw new ArgumentException("Withdraw must be less than balance.");
             }
 
-            BonusSystem.OnWithdraw(withdraw);
+            this.BonusSystem.OnWithdraw(withdraw);
             this.Balance -= withdraw;
             this.AdditionalWithdrawAction(withdraw);
         }
@@ -92,7 +92,7 @@ namespace BLL.Interface.Entities.Accounts.Abstract
                 throw new ArgumentException("Deposit must be positive.");
             }
 
-            BonusSystem.OnDeposit(deposit);
+            this.BonusSystem.OnDeposit(deposit);
             this.Balance += deposit;
             this.AdditionalDepositAction(deposit);
         }
@@ -102,12 +102,12 @@ namespace BLL.Interface.Entities.Accounts.Abstract
         /// </summary>
         public void Close()
         {
-            if (IsClosed)
+            if (this.IsClosed)
             {
                 throw new InvalidOperationException("Account is closed.");
             }
 
-            IsClosed = true;
+            this.IsClosed = true;
         }
 
         /// <summary>

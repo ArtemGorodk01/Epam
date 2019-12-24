@@ -7,8 +7,16 @@ using DAL.Interface.DTO;
 
 namespace BLL.Mappers
 {
+    /// <summary>
+    /// Maps DTO account and account.
+    /// </summary>
     public static class AccountMapper
     {
+        /// <summary>
+        /// Converts account to DTO account
+        /// </summary>
+        /// <param name="account">Account to convert.</param>
+        /// <returns>DTO account.</returns>
         public static AccountDTO ToAccountDTO(this Account account)
         {
             if (account == null)
@@ -30,6 +38,11 @@ namespace BLL.Mappers
             };
         }
 
+        /// <summary>
+        /// Converts account with cashback to DTO account.
+        /// </summary>
+        /// <param name="account">Account to convert.</param>
+        /// <returns>DTO account.</returns>
         public static AccountDTO ToAccountDTO(this CashbackAccount account)
         {
             if (account == null)
@@ -43,6 +56,11 @@ namespace BLL.Mappers
             return dto;
         }
 
+        /// <summary>
+        /// Converts DTO account to account.
+        /// </summary>
+        /// <param name="dto">DTO account to convert.</param>
+        /// <returns>Account.</returns>
         public static Account ToAccount(this AccountDTO dto)
         {
             if (dto == null)
@@ -69,7 +87,7 @@ namespace BLL.Mappers
             }
 
             Account account = null;
-            if(dto.AccountType == typeof(DefaultAccount).ToString())
+            if (dto.AccountType == typeof(DefaultAccount).ToString())
             {
                 account = new DefaultAccount(dto.Id, bonusSystem, dto.IsClosed);
             }

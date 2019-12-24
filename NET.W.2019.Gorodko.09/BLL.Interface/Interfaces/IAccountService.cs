@@ -43,12 +43,12 @@ namespace BLL.Interface.Interfaces
         void Withdraw(int id, decimal withdraw);
 
         /// <summary>
-        /// Saves all records.
+        /// Saves all accounts.
         /// </summary>
         void WriteAll();
 
         /// <summary>
-        /// Reads all records.
+        /// Reads all accounts.
         /// </summary>
         void ReadAll();
     }

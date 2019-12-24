@@ -26,8 +26,9 @@ namespace BLL.Interface.Entities.Accounts
         {
             get
             {
-                return cashbackPercent;
+                return this.cashbackPercent;
             }
+
             set
             {
                 if (value < 0 || value > 100)
@@ -35,7 +36,7 @@ namespace BLL.Interface.Entities.Accounts
                     throw new ArgumentException("Percent is number in range 0-100.");
                 }
 
-                cashbackPercent = value;
+                this.cashbackPercent = value;
             }
         }
 
@@ -58,7 +59,7 @@ namespace BLL.Interface.Entities.Accounts
                 throw new ArgumentException("Withdraw must be positive.");
             }
 
-            Cashback += withdraw * (decimal)CashbackPercent;
+            this.Cashback += withdraw * (decimal)this.CashbackPercent;
         }
     }
 }
