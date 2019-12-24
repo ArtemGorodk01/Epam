@@ -107,7 +107,7 @@ namespace BLL.Interface.Entities.Accounts.Abstract
                 throw new InvalidOperationException("Account is closed.");
             }
 
-            IsClosed = false;
+            IsClosed = true;
         }
 
         /// <summary>

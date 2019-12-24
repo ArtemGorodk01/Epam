@@ -8,7 +8,6 @@ using BLL.Interface.Entities.BonusSystems;
 using BLL.Interface.Entities.BonusSystems.Abstract;
 using BLL.Interface.Interfaces;
 using BLL.Mappers;
-using DAL.Interface.DTO;
 using DAL.Interface.Interfaces;
 
 namespace BLL.ServiceImplementation
@@ -28,7 +27,8 @@ namespace BLL.ServiceImplementation
         public AccountService(IRepository repository)
         {
             this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
-            accounts = new Dictionary<int, Account>();
+            this.accounts = new Dictionary<int, Account>();
+            this.ReadAll();
         }
 
         /// <inheritdoc/>
@@ -36,7 +36,7 @@ namespace BLL.ServiceImplementation
         {
             get
             {
-                return accounts.Select(n => n.Value).ToList();
+                return this.accounts.Select(n => n.Value).ToList();
             }
         }
 
@@ -51,10 +51,10 @@ namespace BLL.ServiceImplementation
             {
                 if (!accounts.ContainsKey(id))
                 {
-                    throw new InvalidOperationException("No account with definite account.");
+                    throw new InvalidOperationException("No account with definite id.");
                 }
 
-                return accounts[id];
+                return this.accounts[id];
             }
         }
 
@@ -97,36 +97,36 @@ namespace BLL.ServiceImplementation
                     throw new InvalidOperationException("Unregistered type of account.");
             }
 
-            accounts.Add(account.Id, account);
+            this.accounts.Add(account.Id, account);
             return account.Id;
         }
 
         /// <inheritdoc/>
         public void Deposit(int id, decimal deposit)
         {
-            accounts[id].Deposit(deposit);
+            this.accounts[id].Deposit(deposit);
         }
 
         /// <inheritdoc/>
         public void Withdraw(int id, decimal withdraw)
         {
-            accounts[id].Withdraw(withdraw);
+            this.accounts[id].Withdraw(withdraw);
         }
 
         /// <inheritdoc/>
         public void ReadAll()
         {
-            var accounts = repository
-                               .Load()
-                               .Select(n => n.ToAccount())
-                               .ToDictionary(n => n.Id, n => n);
+            this.accounts = this.repository
+                                .Load()
+                                .Select(n => n.ToAccount())
+                                .ToDictionary(n => n.Id, n => n);
         }
 
         /// <inheritdoc/>
         public void WriteAll()
         {
             var accountList = accounts.ToList().Select(n => n.Value);
-            repository.Save(accountList.Select(n => n.ToAccountDTO()));
+            this.repository.Save(accountList.Select(n => n.ToAccountDTO()));
         }
 
         private int CreateId()
