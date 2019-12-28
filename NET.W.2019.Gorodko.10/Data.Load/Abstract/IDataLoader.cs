@@ -2,5 +2,6 @@
 {
     public interface IDataLoader
     {
+        string Load();
     }
 }
