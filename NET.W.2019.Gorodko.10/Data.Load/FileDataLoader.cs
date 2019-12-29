@@ -16,7 +16,7 @@ namespace Data.Load
         public string Load()
         {
             string data;
-            using (var reader = new StreamReader(path))
+            using (var reader = new StreamReader(this.path))
             {
                 data = reader.ReadToEnd();
             }

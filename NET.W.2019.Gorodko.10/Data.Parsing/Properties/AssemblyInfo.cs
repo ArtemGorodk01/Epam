@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("Data.Convert")]
+[assembly: AssemblyTitle("Data.Parsing")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Data.Convert")]
+[assembly: AssemblyProduct("Data.Parsing")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("1a7f2fc2-4116-4092-9611-e511c0eb4d78")]
+[assembly: Guid("7c1b27a1-2909-4e44-84a7-d2a4fb0df1ac")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //
