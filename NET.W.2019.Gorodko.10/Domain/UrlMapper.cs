@@ -3,8 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 
+/// <summary>
+/// Provides mapping Url
+/// </summary>
 public static class UrlMapper
 {
+    /// <summary>
+    /// Maps url to xml element.
+    /// </summary>
+    /// <param name="url">Url to map.</param>
+    /// <returns>Xml element.</returns>
     public static XElement ToXElement(this Url url)
     {
         if (url == null)

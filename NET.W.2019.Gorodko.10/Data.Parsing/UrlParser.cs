@@ -7,12 +7,15 @@ using Data.Parsing.Validation.Abstract;
 
 namespace Data.Parsing
 {
+    /// <inheritdoc/>
     public class UrlParser : Parser<Url>
     {
+        /// <inheritdoc/>
         public UrlParser(IConverter<Url> converter) : base(converter)
         {
         }
 
+        /// <inheritdoc/>
         public override IEnumerable<Url> Parse(string text)
         {
             if (text == null)

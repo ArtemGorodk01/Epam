@@ -3,6 +3,7 @@ using Logging.Abstract;
 
 namespace Logging
 {
+    /// <inheritdoc/>
     public class ConsoleLogger : ILogger
     {
         private static volatile ConsoleLogger instance;
@@ -11,6 +12,9 @@ namespace Logging
         private ConsoleLogger()
         { }
 
+        /// <summary>
+        /// Gets the instance of console logger.
+        /// </summary>
         public static ConsoleLogger Instance
         {
             get
@@ -29,6 +33,7 @@ namespace Logging
             }
         }
 
+        /// <inheritdoc/>
         public void Log(string message)
         {
             if (message == null)

@@ -8,19 +8,36 @@ using Logging.Abstract;
 
 namespace Data.Parsing.Converting
 {
+    /// <inheritdoc/>
     public class DefaultUrlConverter : IConverter<Url>
     {
+        /// <summary>
+        /// Regular expression.
+        /// </summary>
         private const string Pattern = @"^(http|https|ftp)://(\w+\.\w+)(/)?(.[^\?]+)(\?(.*))?$";
 
+        /// <summary>
+        /// Logger.
+        /// </summary>
         private readonly ILogger logger;
+
+        /// <summary>
+        /// Validator.
+        /// </summary>
         private readonly IValidator validator;
 
-        public DefaultUrlConverter(IValidator validator,ILogger logger)
+        /// <summary>
+        /// Initials new instance of converter.
+        /// </summary>
+        /// <param name="validator">Validator.</param>
+        /// <param name="logger">Logger.</param>
+        public DefaultUrlConverter(IValidator validator, ILogger logger)
         {
             this.validator = validator ?? throw new ArgumentNullException(nameof(validator));
             this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
+        /// <inheritdoc/>
         public Url Convert(string line)
         {
             if (line == null)
