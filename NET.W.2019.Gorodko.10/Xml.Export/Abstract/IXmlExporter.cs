@@ -1,6 +1,9 @@
-﻿namespace Xml.Export.Abstract
+﻿using System.Collections.Generic;
+
+namespace Xml.Export.Abstract
 {
-    public interface IXmlExporter
+    public interface IXmlExporter<T>
     {
+        void Export(IEnumerable<T> data);
     }
 }

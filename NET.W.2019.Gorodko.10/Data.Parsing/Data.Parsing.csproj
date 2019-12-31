@@ -45,6 +45,7 @@
     <Compile Include="Converting\Abstract\IConverter.cs" />
     <Compile Include="Converting\DefaultUrlConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UrlParser.cs" />
     <Compile Include="Validation\Abstract\IValidator.cs" />
     <Compile Include="Validation\DefaultUrlValidator.cs" />
   </ItemGroup>

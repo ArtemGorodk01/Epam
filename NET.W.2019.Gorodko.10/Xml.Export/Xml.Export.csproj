@@ -46,9 +46,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Data.Load\Data.Load.csproj">
-      <Project>{4fc19341-b9c6-4723-a0e2-efc422f451c0}</Project>
-      <Name>Data.Load</Name>
+    <ProjectReference Include="..\Data.Parsing\Data.Parsing.csproj">
+      <Project>{7c1b27a1-2909-4e44-84a7-d2a4fb0df1ac}</Project>
+      <Name>Data.Parsing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain\Url.csproj">
+      <Project>{b5cc7625-e209-4ef0-a642-c89c740ac219}</Project>
+      <Name>Url</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
