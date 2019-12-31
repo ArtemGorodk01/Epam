@@ -3,12 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Data.Parsing.Converting.Abstract;
+using Data.Parsing.Validation.Abstract;
+using Logging.Abstract;
 
 namespace Data.Parsing.Converting
 {
     public class DefaultUrlConverter : IConverter<Url>
     {
         private const string Pattern = @"^(http|https|ftp)://(\w+\.\w+)(/)?(.[^\?]+)(\?(.*))?$";
+
+        private readonly ILogger logger;
+        private readonly IValidator validator;
+
+        public DefaultUrlConverter(IValidator validator,ILogger logger)
+        {
+            this.validator = validator ?? throw new ArgumentNullException(nameof(validator));
+            this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        }
 
         public Url Convert(string line)
         {
@@ -19,6 +30,11 @@ namespace Data.Parsing.Converting
 
             try
             {
+                if (!validator.Validate(line))
+                {
+                    throw new ArgumentException();
+                }
+
                 var regex = new Regex(Pattern);
                 var groups = regex.Match(line).Groups;
 
@@ -41,7 +57,8 @@ namespace Data.Parsing.Converting
             }
             catch (ArgumentException)
             {
-                throw new ArgumentException($"Wrong url {line}.");
+                logger.Log($"Wrong url {line}");
+                return null;
             }
         }
 

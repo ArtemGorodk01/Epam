@@ -62,6 +62,10 @@
       <Project>{b5cc7625-e209-4ef0-a642-c89c740ac219}</Project>
       <Name>Url</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Logging\Logging.csproj">
+      <Project>{576edc17-0321-4780-9a9b-8946b743f652}</Project>
+      <Name>Logging</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Xml.Export\Xml.Export.csproj">
       <Project>{43877124-a226-4a40-940c-be210d1e962e}</Project>
       <Name>Xml.Export</Name>

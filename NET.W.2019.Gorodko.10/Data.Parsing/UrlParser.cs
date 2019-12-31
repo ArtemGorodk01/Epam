@@ -9,7 +9,7 @@ namespace Data.Parsing
 {
     public class UrlParser : Parser<Url>
     {
-        public UrlParser(IConverter<Url> converter, IValidator validator) : base(converter, validator)
+        public UrlParser(IConverter<Url> converter) : base(converter)
         {
         }
 
@@ -21,8 +21,8 @@ namespace Data.Parsing
             }
 
             var lines = text.Trim().Split('\n');
-            return lines.Where(line => validator.Validate(line))
-                        .Select(line => converter.Convert(line))
+            return lines.Select(line => converter.Convert(line))
+                        .Where(line => line != null)
                         .ToList();
         }
     }

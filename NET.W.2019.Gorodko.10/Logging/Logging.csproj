@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7C1B27A1-2909-4E44-84A7-D2A4FB0DF1AC}</ProjectGuid>
+    <ProjectGuid>{576EDC17-0321-4780-9A9B-8946B743F652}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Data.Parsing</RootNamespace>
-    <AssemblyName>Data.Parsing</AssemblyName>
+    <RootNamespace>Logging</RootNamespace>
+    <AssemblyName>Logging</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,23 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\Parser.cs" />
-    <Compile Include="Converting\Abstract\IConverter.cs" />
-    <Compile Include="Converting\DefaultUrlConverter.cs" />
+    <Compile Include="Abstract\ILogger.cs" />
+    <Compile Include="ConsoleLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UrlParser.cs" />
-    <Compile Include="Validation\Abstract\IValidator.cs" />
-    <Compile Include="Validation\DefaultUrlValidator.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Domain\Url.csproj">
-      <Project>{b5cc7625-e209-4ef0-a642-c89c740ac219}</Project>
-      <Name>Url</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Logging\Logging.csproj">
-      <Project>{576edc17-0321-4780-9a9b-8946b743f652}</Project>
-      <Name>Logging</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
