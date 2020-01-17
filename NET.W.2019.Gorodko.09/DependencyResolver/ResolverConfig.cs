@@ -1,7 +1,8 @@
 ﻿using BLL.Interface.Interfaces;
 using BLL.ServiceImplementation;
-using DAL.Fake.Repositories;
+using DAL;
 using DAL.Interface.Interfaces;
+using DAL.Repositories;
 using Ninject;
 
 namespace DependencyResolver
@@ -18,7 +19,7 @@ namespace DependencyResolver
         public static void ConfigurateResolver(this IKernel kernel)
         {
             kernel.Bind<IAccountService>().To<AccountService>();
-            kernel.Bind<IRepository>().To<FakeRepository>();
+            kernel.Bind<IRepository>().To<EFRepository>().WithConstructorArgument(new AccountContext());
         }
     }
 }

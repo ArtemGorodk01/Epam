@@ -64,6 +64,10 @@
       <Project>{0dbfb510-38b7-4681-83ce-75de0a7c3335}</Project>
       <Name>DAL.Interface</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{5fc1e612-ee37-4466-a445-068663cfa8af}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
